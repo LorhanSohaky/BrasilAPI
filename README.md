@@ -43,6 +43,17 @@ Veja mais detalhes sobre **Como contribuir** no arquivo [CONTRIBUTING.md](CONTRI
 ## Termos de Uso
 O BrasilAPI é uma iniciativa feita de brasileiros para brasileiros, por favor, não abuse deste serviço. Estamos em beta e ainda elaborando os Termos de Uso, mas por enquanto por favor não utilize formas automatizadas para fazer "crawling" dos dados da API. Um exemplo prático disto é um dos maiores provedores de telefonia do Brasil estar revalidando, neste exato momento, todos os Ceps (de `00000000` até `99999999`) e estourando em 5 vezes o limite atual da nossa conta no servidor. O volume de consulta dever ter a natureza de uma pessoa real requisitando um determinado dado. E para consultas com um alto volume automatizado, iremos mais para frente fornecer alguma solução, como por exemplo, conseguir fazer o download de toda a base de Ceps em uma única request.
 
+## Teste
+### Collaborators
+
+<!-- readme: collaborators -start -->
+<!-- readme: collaborators -end -->
+
+### Contributors
+
+<!-- readme: contributors -start -->
+<!-- readme: contributors -end -->
+
 ## Contribuidores
 
 | [<img alt="murilohns" src="https://github.com/murilohns.png?size=115" width="115"><br><sub>@murilohns</sub>](https://github.com/murilohns) | [<img alt="CarlosZiegler" src="https://github.com/CarlosZiegler.png?size=115" width="115"><br><sub>@CarlosZiegler</sub>](https://github.com/CarlosZiegler) | [<img alt="WeslleyNasRocha" src="https://github.com/WeslleyNasRocha.png?size=115" width="115"><br><sub>@WeslleyNasRocha</sub>](https://github.com/WeslleyNasRocha) | [<img alt="paulo-santana" src="https://github.com/paulo-santana.png?size=115" width="115"><br><sub>@paulo-santana</sub>](https://github.com/paulo-santana) | [<img alt="paulogdm" src="https://github.com/paulogdm.png?size=115" width="115"><br><sub>@paulogdm</sub>](https://github.com/paulogdm) | [<img alt="RaphaelOliveiraMoura" src="https://github.com/RaphaelOliveiraMoura.png?size=115" width="115"><br><sub>@RaphaelOliveiraMoura</sub>](https://github.com/RaphaelOliveiraMoura) |
