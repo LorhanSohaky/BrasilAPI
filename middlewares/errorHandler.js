@@ -1,7 +1,7 @@
 import BaseError from '@/errors/BaseError';
 
 export default function errorHandler(error, request, response) {
-  console.log({
+  console.debug({
     url: request.url,
     ...error,
   });

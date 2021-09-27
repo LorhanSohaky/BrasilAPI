@@ -14,12 +14,14 @@ async function FipeTruckAutomakers(request, response) {
     ? parseInt(referenceTableCode, 10)
     : undefined;
 
+  console.debug('Query:', request.query);
   if (referenceTableCode) {
     const referenceTables = await listReferenceTables();
 
     const hasReferenceTable = !!referenceTables.find(
       (table) => table.codigo === referenceTable
     );
+    console.debug('Tem a tabela?', hasReferenceTable);
 
     if (!hasReferenceTable) {
       throw new BadRequestError({ message: 'Tabela de referência inválida' });
