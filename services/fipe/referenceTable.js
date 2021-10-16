@@ -19,13 +19,8 @@ export async function listReferenceTables() {
 }
 
 export async function listReferenceTablesFromBrasilAPI() {
-  try {
-    const { data } = await axios.get(`${BRASIL_API_URL}/fipe/tabelas/v1`);
-    return data;
-  } catch (err) {
-    console.log(err);
-    return [];
-  }
+  const { data } = await axios.get(`${BRASIL_API_URL}/fipe/tabelas/v1`);
+  return data;
 }
 
 export async function getLatestReferenceTable() {
