@@ -5,3 +5,4 @@ export const VEHICLE_TYPE = {
 };
 
 export const FIPE_URL = 'https://veiculos.fipe.org.br/api';
+export const BRASIL_API_URL = 'https://brasilapi.com.br/api';

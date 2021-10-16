@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { FIPE_URL } from './constants';
+import { BRASIL_API_URL, FIPE_URL } from './constants';
 
 export async function listReferenceTables() {
   const { data } = await axios.post(
@@ -18,7 +18,13 @@ export async function listReferenceTables() {
     .sort((a, b) => b.codigo - a.codigo);
 }
 
+export async function listReferenceTablesFromBrasilAPI() {
+  const { data } = await axios.get(`${BRASIL_API_URL}/fipe/tabelas/v1`);
+
+  return data;
+}
+
 export async function getLatestReferenceTable() {
-  const tables = await listReferenceTables();
+  const tables = await listReferenceTablesFromBrasilAPI();
   return tables[0].codigo;
 }
