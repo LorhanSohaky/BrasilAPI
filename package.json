@@ -44,7 +44,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "test": "jest --detectOpenHandles --forceExit",
+    "test": "jest --detectOpenHandles --forceExit --runInBand -i fipe-v1.test",
     "test:watch": "jest --watch",
     "fix": "eslint . --ext .js --fix",
     "commit": "cz",
