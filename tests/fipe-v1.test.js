@@ -95,41 +95,6 @@ describe('/fipe/marcas/v1/carros (E2E)', () => {
     expect(response.status).toBe(200);
     expect(response.data).toEqual(validTestAutomakersArray);
   });
-
-  test('Utilizando com a tabela de referência 267', async () => {
-    expect.assertions(2);
-    const requestUrl = `${global.SERVER_URL}/api/fipe/marcas/v1/carros`;
-    const referenceTable = 267;
-
-    const response = await axios.get(requestUrl, {
-      params: {
-        tabela_referencia: referenceTable,
-      },
-    });
-
-    expect(response.status).toBe(200);
-    expect(response.data).toEqual(validTestAutomakersArray);
-  });
-
-  test('Utilizando com uma tabela de referência inválida', async () => {
-    expect.assertions(2);
-    const requestUrl = `${global.SERVER_URL}/api/fipe/marcas/v1/carros`;
-    const referenceTable = 'AAAA';
-    try {
-      await axios.get(requestUrl, {
-        params: { tabela_referencia: referenceTable },
-      });
-    } catch (error) {
-      const { response } = error;
-
-      expect(response.status).toBe(400);
-      expect(response.data).toEqual({
-        name: 'BadRequestError',
-        message: 'Tabela de referência inválida',
-        type: 'bad_request',
-      });
-    }
-  });
 });
 
 describe('/fipe/marcas/v1/motos (E2E)', () => {
@@ -140,41 +105,6 @@ describe('/fipe/marcas/v1/motos (E2E)', () => {
 
     expect(response.status).toBe(200);
     expect(response.data).toEqual(validTestAutomakersArray);
-  });
-
-  test('Utilizando com a tabela de referência 267', async () => {
-    expect.assertions(2);
-    const requestUrl = `${global.SERVER_URL}/api/fipe/marcas/v1/motos`;
-    const referenceTable = 267;
-
-    const response = await axios.get(requestUrl, {
-      params: {
-        tabela_referencia: referenceTable,
-      },
-    });
-
-    expect(response.status).toBe(200);
-    expect(response.data).toEqual(validTestAutomakersArray);
-  });
-
-  test('Utilizando com uma tabela de referência inválida', async () => {
-    expect.assertions(2);
-    const requestUrl = `${global.SERVER_URL}/api/fipe/marcas/v1/motos`;
-    const referenceTable = 'AAAA';
-    try {
-      await axios.get(requestUrl, {
-        params: { tabela_referencia: referenceTable },
-      });
-    } catch (error) {
-      const { response } = error;
-
-      expect(response.status).toBe(400);
-      expect(response.data).toEqual({
-        name: 'BadRequestError',
-        message: 'Tabela de referência inválida',
-        type: 'bad_request',
-      });
-    }
   });
 });
 
@@ -187,41 +117,6 @@ describe('/fipe/marcas/v1/caminhoes (E2E)', () => {
     expect(response.status).toBe(200);
     expect(response.data).toEqual(validTestAutomakersArray);
   });
-
-  test('Utilizando com a tabela de referência 267', async () => {
-    expect.assertions(2);
-    const requestUrl = `${global.SERVER_URL}/api/fipe/marcas/v1/caminhoes`;
-    const referenceTable = 267;
-
-    const response = await axios.get(requestUrl, {
-      params: {
-        tabela_referencia: referenceTable,
-      },
-    });
-
-    expect(response.status).toBe(200);
-    expect(response.data).toEqual(validTestAutomakersArray);
-  });
-
-  test('Utilizando com uma tabela de referência inválida', async () => {
-    expect.assertions(2);
-    const requestUrl = `${global.SERVER_URL}/api/fipe/marcas/v1/caminhoes`;
-    const referenceTable = 'AAAA';
-    try {
-      await axios.get(requestUrl, {
-        params: { tabela_referencia: referenceTable },
-      });
-    } catch (error) {
-      const { response } = error;
-
-      expect(response.status).toBe(400);
-      expect(response.data).toEqual({
-        name: 'BadRequestError',
-        message: 'Tabela de referência inválida',
-        type: 'bad_request',
-      });
-    }
-  });
 });
 
 describe('/fipe/preco/v1 (E2E)', () => {
@@ -230,38 +125,6 @@ describe('/fipe/preco/v1 (E2E)', () => {
     const fipeCode = '015088-6';
     const requestUrl = `${global.SERVER_URL}/api/fipe/preco/v1/${fipeCode}`;
     const response = await axios.get(requestUrl);
-
-    expect(response.status).toBe(200);
-    expect(response.data).toEqual(validTestVehicleArray);
-  });
-
-  test('Utilizando um veículo válido com a tabela de referência 267', async () => {
-    expect.assertions(2);
-    const fipeCode = '015088-6';
-    const requestUrl = `${global.SERVER_URL}/api/fipe/preco/v1/${fipeCode}`;
-    const referenceTable = 267;
-
-    const response = await axios.get(requestUrl, {
-      params: {
-        tabela_referencia: referenceTable,
-      },
-    });
-
-    expect(response.status).toBe(200);
-    expect(response.data).toEqual(validTestVehicleArray);
-  });
-
-  test('Utilizando um carro válido com a tabela de referência 270', async () => {
-    expect.assertions(2);
-    const fipeCode = '004113-0';
-    const requestUrl = `${global.SERVER_URL}/api/fipe/preco/v1/${fipeCode}`;
-    const referenceTable = 270;
-
-    const response = await axios.get(requestUrl, {
-      params: {
-        tabela_referencia: referenceTable,
-      },
-    });
 
     expect(response.status).toBe(200);
     expect(response.data).toEqual(validTestVehicleArray);
@@ -297,89 +160,5 @@ describe('/fipe/preco/v1 (E2E)', () => {
 
     expect(response.status).toBe(200);
     expect(response.data).toEqual(validTestVehicleArray);
-  });
-
-  test('Utilizando um veículo válido com a tabela de referência inválida', async () => {
-    expect.assertions(2);
-    const fipeCode = '015088-6';
-    const requestUrl = `${global.SERVER_URL}/api/fipe/preco/v1/${fipeCode}`;
-    const referenceTable = 'AAAA';
-    try {
-      await axios.get(requestUrl, {
-        params: { tabela_referencia: referenceTable },
-      });
-    } catch (error) {
-      const { response } = error;
-
-      expect(response.status).toBe(400);
-      expect(response.data).toEqual({
-        name: 'BadRequestError',
-        message: 'Tabela de referência inválida',
-        type: 'bad_request',
-      });
-    }
-  });
-
-  test('Utilizando um veículo inválido sem informar nenhuma tabela de referência', async () => {
-    expect.assertions(2);
-    const fipeCode = 'AAAAAA-6';
-    const requestUrl = `${global.SERVER_URL}/api/fipe/preco/v1/${fipeCode}`;
-
-    try {
-      await axios.get(requestUrl);
-    } catch (error) {
-      const { response } = error;
-
-      expect(response.status).toBe(400);
-      expect(response.data).toEqual({
-        name: 'BadRequestError',
-        message: 'Código fipe inválido',
-        type: 'bad_request',
-      });
-    }
-  });
-
-  test('Utilizando um veículo inválido com a tabela de referência 267', async () => {
-    expect.assertions(2);
-    const fipeCode = 'AAAAAA-6';
-    const requestUrl = `${global.SERVER_URL}/api/fipe/preco/v1/${fipeCode}`;
-    const referenceTable = 267;
-    try {
-      await axios.get(requestUrl, {
-        params: {
-          tabela_referencia: referenceTable,
-        },
-      });
-    } catch (error) {
-      const { response } = error;
-
-      expect(response.status).toBe(400);
-      expect(response.data).toEqual({
-        name: 'BadRequestError',
-        message: 'Código fipe inválido',
-        type: 'bad_request',
-      });
-    }
-  });
-
-  test('Utilizando um veículo inválido com a tabela de referência inválida', async () => {
-    expect.assertions(2);
-    const fipeCode = 'AAAAAA-6';
-    const requestUrl = `${global.SERVER_URL}/api/fipe/preco/v1/${fipeCode}`;
-    const referenceTable = 'AAAA';
-    try {
-      await axios.get(requestUrl, {
-        params: { tabela_referencia: referenceTable },
-      });
-    } catch (error) {
-      const { response } = error;
-
-      expect(response.status).toBe(400);
-      expect(response.data).toEqual({
-        name: 'BadRequestError',
-        message: 'Tabela de referência inválida',
-        type: 'bad_request',
-      });
-    }
   });
 });
