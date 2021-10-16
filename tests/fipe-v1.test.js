@@ -1,4 +1,5 @@
 const axios = require('axios');
+const ProxyList = require('free-proxy');
 
 const validTestTableArray = expect.arrayContaining([
   expect.objectContaining({
@@ -31,9 +32,12 @@ const validTestVehicleArray = expect.arrayContaining([
 
 describe('/fipe/tabelas/v1 (E2E)', () => {
   test('Listando as tabelas de referências', async () => {
+    const proxyList = new ProxyList();
+    const proxy = await proxyList.randomByProtocol('https');
+
     expect.assertions(2);
     const requestUrl = `${global.SERVER_URL}/api/fipe/tabelas/v1`;
-    const response = await axios.get(requestUrl);
+    const response = await axios.get(requestUrl, proxy);
 
     expect(response.status).toBe(200);
     expect(response.data).toEqual(validTestTableArray);
@@ -42,20 +46,26 @@ describe('/fipe/tabelas/v1 (E2E)', () => {
 
 describe('/fipe/marcas/v1 (E2E)', () => {
   test('Utilizando sem informar nenhuma tabela de referência', async () => {
+    const proxyList = new ProxyList();
+    const proxy = await proxyList.randomByProtocol('https');
+
     expect.assertions(2);
     const requestUrl = `${global.SERVER_URL}/api/fipe/marcas/v1`;
-    const response = await axios.get(requestUrl);
+    const response = await axios.get(requestUrl, proxy);
 
     expect(response.status).toBe(200);
     expect(response.data).toEqual(validTestAutomakersArray);
   });
 
   test('Utilizando com a tabela de referência 267', async () => {
+    const proxyList = new ProxyList();
+    const proxy = await proxyList.randomByProtocol('https');
+
     expect.assertions(2);
     const requestUrl = `${global.SERVER_URL}/api/fipe/marcas/v1`;
     const referenceTable = 267;
 
-    const response = await axios.get(requestUrl, {
+    const response = await axios.get(requestUrl, proxy, {
       params: {
         tabela_referencia: referenceTable,
       },
@@ -66,11 +76,14 @@ describe('/fipe/marcas/v1 (E2E)', () => {
   });
 
   test('Utilizando com uma tabela de referência inválida', async () => {
+    const proxyList = new ProxyList();
+    const proxy = await proxyList.randomByProtocol('https');
+
     expect.assertions(2);
     const requestUrl = `${global.SERVER_URL}/api/fipe/marcas/v1`;
     const referenceTable = 'AAAA';
     try {
-      await axios.get(requestUrl, {
+      await axios.get(requestUrl, proxy, {
         params: { tabela_referencia: referenceTable },
       });
     } catch (error) {
@@ -88,20 +101,26 @@ describe('/fipe/marcas/v1 (E2E)', () => {
 
 describe('/fipe/marcas/v1/carros (E2E)', () => {
   test('Utilizando sem informar nenhuma tabela de referência', async () => {
+    const proxyList = new ProxyList();
+    const proxy = await proxyList.randomByProtocol('https');
+
     expect.assertions(2);
     const requestUrl = `${global.SERVER_URL}/api/fipe/marcas/v1/carros`;
-    const response = await axios.get(requestUrl);
+    const response = await axios.get(requestUrl, proxy);
 
     expect(response.status).toBe(200);
     expect(response.data).toEqual(validTestAutomakersArray);
   });
 
   test('Utilizando com a tabela de referência 267', async () => {
+    const proxyList = new ProxyList();
+    const proxy = await proxyList.randomByProtocol('https');
+
     expect.assertions(2);
     const requestUrl = `${global.SERVER_URL}/api/fipe/marcas/v1/carros`;
     const referenceTable = 267;
 
-    const response = await axios.get(requestUrl, {
+    const response = await axios.get(requestUrl, proxy, {
       params: {
         tabela_referencia: referenceTable,
       },
@@ -112,11 +131,14 @@ describe('/fipe/marcas/v1/carros (E2E)', () => {
   });
 
   test('Utilizando com uma tabela de referência inválida', async () => {
+    const proxyList = new ProxyList();
+    const proxy = await proxyList.randomByProtocol('https');
+
     expect.assertions(2);
     const requestUrl = `${global.SERVER_URL}/api/fipe/marcas/v1/carros`;
     const referenceTable = 'AAAA';
     try {
-      await axios.get(requestUrl, {
+      await axios.get(requestUrl, proxy, {
         params: { tabela_referencia: referenceTable },
       });
     } catch (error) {
@@ -134,20 +156,26 @@ describe('/fipe/marcas/v1/carros (E2E)', () => {
 
 describe('/fipe/marcas/v1/motos (E2E)', () => {
   test('Utilizando sem informar nenhuma tabela de referência', async () => {
+    const proxyList = new ProxyList();
+    const proxy = await proxyList.randomByProtocol('https');
+
     expect.assertions(2);
     const requestUrl = `${global.SERVER_URL}/api/fipe/marcas/v1/motos`;
-    const response = await axios.get(requestUrl);
+    const response = await axios.get(requestUrl, proxy);
 
     expect(response.status).toBe(200);
     expect(response.data).toEqual(validTestAutomakersArray);
   });
 
   test('Utilizando com a tabela de referência 267', async () => {
+    const proxyList = new ProxyList();
+    const proxy = await proxyList.randomByProtocol('https');
+
     expect.assertions(2);
     const requestUrl = `${global.SERVER_URL}/api/fipe/marcas/v1/motos`;
     const referenceTable = 267;
 
-    const response = await axios.get(requestUrl, {
+    const response = await axios.get(requestUrl, proxy, {
       params: {
         tabela_referencia: referenceTable,
       },
@@ -158,11 +186,14 @@ describe('/fipe/marcas/v1/motos (E2E)', () => {
   });
 
   test('Utilizando com uma tabela de referência inválida', async () => {
+    const proxyList = new ProxyList();
+    const proxy = await proxyList.randomByProtocol('https');
+
     expect.assertions(2);
     const requestUrl = `${global.SERVER_URL}/api/fipe/marcas/v1/motos`;
     const referenceTable = 'AAAA';
     try {
-      await axios.get(requestUrl, {
+      await axios.get(requestUrl, proxy, {
         params: { tabela_referencia: referenceTable },
       });
     } catch (error) {
@@ -180,20 +211,26 @@ describe('/fipe/marcas/v1/motos (E2E)', () => {
 
 describe('/fipe/marcas/v1/caminhoes (E2E)', () => {
   test('Utilizando sem informar nenhuma tabela de referência', async () => {
+    const proxyList = new ProxyList();
+    const proxy = await proxyList.randomByProtocol('https');
+
     expect.assertions(2);
     const requestUrl = `${global.SERVER_URL}/api/fipe/marcas/v1/caminhoes`;
-    const response = await axios.get(requestUrl);
+    const response = await axios.get(requestUrl, proxy);
 
     expect(response.status).toBe(200);
     expect(response.data).toEqual(validTestAutomakersArray);
   });
 
   test('Utilizando com a tabela de referência 267', async () => {
+    const proxyList = new ProxyList();
+    const proxy = await proxyList.randomByProtocol('https');
+
     expect.assertions(2);
     const requestUrl = `${global.SERVER_URL}/api/fipe/marcas/v1/caminhoes`;
     const referenceTable = 267;
 
-    const response = await axios.get(requestUrl, {
+    const response = await axios.get(requestUrl, proxy, {
       params: {
         tabela_referencia: referenceTable,
       },
@@ -204,11 +241,14 @@ describe('/fipe/marcas/v1/caminhoes (E2E)', () => {
   });
 
   test('Utilizando com uma tabela de referência inválida', async () => {
+    const proxyList = new ProxyList();
+    const proxy = await proxyList.randomByProtocol('https');
+
     expect.assertions(2);
     const requestUrl = `${global.SERVER_URL}/api/fipe/marcas/v1/caminhoes`;
     const referenceTable = 'AAAA';
     try {
-      await axios.get(requestUrl, {
+      await axios.get(requestUrl, proxy, {
         params: { tabela_referencia: referenceTable },
       });
     } catch (error) {
@@ -226,22 +266,28 @@ describe('/fipe/marcas/v1/caminhoes (E2E)', () => {
 
 describe('/fipe/preco/v1 (E2E)', () => {
   test('Utilizando um veículo válido sem informar nenhuma tabela de referência', async () => {
+    const proxyList = new ProxyList();
+    const proxy = await proxyList.randomByProtocol('https');
+
     expect.assertions(2);
     const fipeCode = '015088-6';
     const requestUrl = `${global.SERVER_URL}/api/fipe/preco/v1/${fipeCode}`;
-    const response = await axios.get(requestUrl);
+    const response = await axios.get(requestUrl, proxy);
 
     expect(response.status).toBe(200);
     expect(response.data).toEqual(validTestVehicleArray);
   });
 
   test('Utilizando um veículo válido com a tabela de referência 267', async () => {
+    const proxyList = new ProxyList();
+    const proxy = await proxyList.randomByProtocol('https');
+
     expect.assertions(2);
     const fipeCode = '015088-6';
     const requestUrl = `${global.SERVER_URL}/api/fipe/preco/v1/${fipeCode}`;
     const referenceTable = 267;
 
-    const response = await axios.get(requestUrl, {
+    const response = await axios.get(requestUrl, proxy, {
       params: {
         tabela_referencia: referenceTable,
       },
@@ -252,12 +298,15 @@ describe('/fipe/preco/v1 (E2E)', () => {
   });
 
   test('Utilizando um carro válido com a tabela de referência 270', async () => {
+    const proxyList = new ProxyList();
+    const proxy = await proxyList.randomByProtocol('https');
+
     expect.assertions(2);
     const fipeCode = '004113-0';
     const requestUrl = `${global.SERVER_URL}/api/fipe/preco/v1/${fipeCode}`;
     const referenceTable = 270;
 
-    const response = await axios.get(requestUrl, {
+    const response = await axios.get(requestUrl, proxy, {
       params: {
         tabela_referencia: referenceTable,
       },
@@ -268,12 +317,15 @@ describe('/fipe/preco/v1 (E2E)', () => {
   });
 
   test('Utilizando uma moto válida com a tabela de referência 270', async () => {
+    const proxyList = new ProxyList();
+    const proxy = await proxyList.randomByProtocol('https');
+
     expect.assertions(2);
     const fipeCode = '811165-0';
     const requestUrl = `${global.SERVER_URL}/api/fipe/preco/v1/${fipeCode}`;
     const referenceTable = 270;
 
-    const response = await axios.get(requestUrl, {
+    const response = await axios.get(requestUrl, proxy, {
       params: {
         tabela_referencia: referenceTable,
       },
@@ -284,12 +336,15 @@ describe('/fipe/preco/v1 (E2E)', () => {
   });
 
   test('Utilizando um caminhão válido com a tabela de referência 270', async () => {
+    const proxyList = new ProxyList();
+    const proxy = await proxyList.randomByProtocol('https');
+
     expect.assertions(2);
     const fipeCode = '516094-4';
     const requestUrl = `${global.SERVER_URL}/api/fipe/preco/v1/${fipeCode}`;
     const referenceTable = 270;
 
-    const response = await axios.get(requestUrl, {
+    const response = await axios.get(requestUrl, proxy, {
       params: {
         tabela_referencia: referenceTable,
       },
@@ -300,12 +355,15 @@ describe('/fipe/preco/v1 (E2E)', () => {
   });
 
   test('Utilizando um veículo válido com a tabela de referência inválida', async () => {
+    const proxyList = new ProxyList();
+    const proxy = await proxyList.randomByProtocol('https');
+
     expect.assertions(2);
     const fipeCode = '015088-6';
     const requestUrl = `${global.SERVER_URL}/api/fipe/preco/v1/${fipeCode}`;
     const referenceTable = 'AAAA';
     try {
-      await axios.get(requestUrl, {
+      await axios.get(requestUrl, proxy, {
         params: { tabela_referencia: referenceTable },
       });
     } catch (error) {
@@ -321,12 +379,15 @@ describe('/fipe/preco/v1 (E2E)', () => {
   });
 
   test('Utilizando um veículo inválido sem informar nenhuma tabela de referência', async () => {
+    const proxyList = new ProxyList();
+    const proxy = await proxyList.randomByProtocol('https');
+
     expect.assertions(2);
     const fipeCode = 'AAAAAA-6';
     const requestUrl = `${global.SERVER_URL}/api/fipe/preco/v1/${fipeCode}`;
 
     try {
-      await axios.get(requestUrl);
+      await axios.get(requestUrl, proxy);
     } catch (error) {
       const { response } = error;
 
@@ -340,12 +401,15 @@ describe('/fipe/preco/v1 (E2E)', () => {
   });
 
   test('Utilizando um veículo inválido com a tabela de referência 267', async () => {
+    const proxyList = new ProxyList();
+    const proxy = await proxyList.randomByProtocol('https');
+
     expect.assertions(2);
     const fipeCode = 'AAAAAA-6';
     const requestUrl = `${global.SERVER_URL}/api/fipe/preco/v1/${fipeCode}`;
     const referenceTable = 267;
     try {
-      await axios.get(requestUrl, {
+      await axios.get(requestUrl, proxy, {
         params: {
           tabela_referencia: referenceTable,
         },
@@ -363,12 +427,15 @@ describe('/fipe/preco/v1 (E2E)', () => {
   });
 
   test('Utilizando um veículo inválido com a tabela de referência inválida', async () => {
+    const proxyList = new ProxyList();
+    const proxy = await proxyList.randomByProtocol('https');
+
     expect.assertions(2);
     const fipeCode = 'AAAAAA-6';
     const requestUrl = `${global.SERVER_URL}/api/fipe/preco/v1/${fipeCode}`;
     const referenceTable = 'AAAA';
     try {
-      await axios.get(requestUrl, {
+      await axios.get(requestUrl, proxy, {
         params: { tabela_referencia: referenceTable },
       });
     } catch (error) {

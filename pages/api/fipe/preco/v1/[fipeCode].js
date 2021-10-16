@@ -2,7 +2,7 @@ import app from '@/app';
 import BadRequestError from '@/errors/BadRequestError';
 
 import { getFipePrice } from '@/services/fipe/price';
-import { listReferenceTables } from '@/services/fipe/referenceTable';
+import { listReferenceTablesFromBrasilAPI } from '@/services/fipe/referenceTable';
 
 async function FipePrice(request, response) {
   try {
@@ -14,7 +14,7 @@ async function FipePrice(request, response) {
       : undefined;
 
     if (referenceTableCode) {
-      const referenceTables = await listReferenceTables();
+      const referenceTables = await listReferenceTablesFromBrasilAPI();
 
       const hasReferenceTable = !!referenceTables.find(
         (table) => table.codigo === referenceTable

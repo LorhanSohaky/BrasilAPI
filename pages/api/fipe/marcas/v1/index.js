@@ -6,7 +6,7 @@ import {
   listCarAutomakers,
   listMotorcycleAutomakers,
 } from '@/services/fipe/automakers';
-import { listReferenceTables } from '@/services/fipe/referenceTable';
+import { listReferenceTablesFromBrasilAPI } from '@/services/fipe/referenceTable';
 
 async function FipeTruckAutomakers(request, response) {
   const referenceTableCode = request.query.tabela_referencia;
@@ -15,7 +15,7 @@ async function FipeTruckAutomakers(request, response) {
     : undefined;
 
   if (referenceTableCode) {
-    const referenceTables = await listReferenceTables();
+    const referenceTables = await listReferenceTablesFromBrasilAPI();
 
     const hasReferenceTable = !!referenceTables.find(
       (table) => table.codigo === referenceTable
