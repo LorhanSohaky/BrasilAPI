@@ -5,7 +5,7 @@ import { getDistrictsByUf } from '@/services/ibge/gov';
 import NotFoundError from '@/errors/NotFoundError';
 
 const getData = (uf) => {
-  return Promise.race([getDistrictsByUf(uf), getStateCities(uf)]);
+  return Promise.any([getDistrictsByUf(uf), getStateCities(uf)]);
 };
 
 const action = async (request, response) => {
