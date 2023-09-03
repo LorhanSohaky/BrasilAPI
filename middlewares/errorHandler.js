@@ -1,10 +1,9 @@
 import BaseError from '@/errors/BaseError';
 
 export default function errorHandler(error, request, response) {
-  console.log({
-    url: request.url,
-    ...error,
-  });
+  if (typeof error.toJSON === 'function') {
+    console.log(error.toJSON());
+  }
 
   if (error instanceof BaseError) {
     const errorResponse = {
