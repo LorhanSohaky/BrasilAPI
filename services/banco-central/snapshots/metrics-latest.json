@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-06-30T15:42:50.945Z",
-  "run_id": "2026-06-30T15-42-44-770Z",
-  "snapshot_file": "banks-headquarters-2026-06-30T15-42-44-770Z.json",
+  "generated_at": "2026-11-09T15:37:35.010Z",
+  "run_id": "2026-11-09T15-37-32-222Z",
+  "snapshot_file": "banks-headquarters-2026-11-09T15-37-32-222Z.json",
   "totals": {
-    "banks": 480,
-    "with_address": 458,
-    "without_address": 22,
-    "coverage_total": 0.9541666666666667
+    "banks": 470,
+    "with_address": 419,
+    "without_address": 51,
+    "coverage_total": 0.8914893617021277
   },
   "deltas": {
     "previous_with_address": 458,
     "previous_without_address": 22,
-    "new_nulls": 0,
+    "new_nulls": 29,
     "recovered_addresses": 0
   },
   "conflicts": {
@@ -19,7 +19,9 @@
     "method": "same_normalized_name_with_different_address_source"
   },
   "sources": {
-    "bcb_failed_sources": [],
+    "bcb_failed_sources": [
+      "https://olinda.bcb.gov.br/olinda/servico/Instituicoes_em_funcionamento/versao/v1/odata/SedesCooperativas?$format=json"
+    ],
     "cnpj_lookup_candidates": 0,
     "cnpj_failed_lookups": 0,
     "cnpj_failed_samples": [],
